@@ -1,7 +1,6 @@
 import Creador from './components/Creador';
 import Lista from './components/Lista';
 import Elemento from './components/Elemento';
-import './App.css'
 
 function App() {
   return (
@@ -9,7 +8,10 @@ function App() {
       <Creador/>
       <Lista>
         {/* pensar en forma de añadir varios elementos */}
-        <Elemento />
+        <Elemento data={'test text'} />
+        <Elemento data={'test text'} />
+        <Elemento data={'test text'} />
+        <Elemento data={'test text'} />
       </Lista>
     </section>
   )
