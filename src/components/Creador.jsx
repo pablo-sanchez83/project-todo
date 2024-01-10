@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import { useState } from "react";
 
 export default function Creador({ onCreate }) {
