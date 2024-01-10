@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Creador from './components/Creador';
 import Lista from './components/Lista';
 import Elemento from './components/Elemento';
 
 function App() {
-  const [listaDatos, setListaDatos] = useState([]);
+  const storedData = JSON.parse(localStorage.getItem('listaDatos')) || [];
+  const [listaDatos, setListaDatos] = useState(storedData);
 
+  useEffect(() => {
+    localStorage.setItem('listaDatos', JSON.stringify(listaDatos));
+  }, [listaDatos]);
+  
   function handleAdd(tarea) {
     setListaDatos((prevList) => {
       const newList = [...prevList, tarea];
