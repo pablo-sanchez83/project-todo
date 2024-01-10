@@ -18,7 +18,12 @@ export default function Creador({ onCreate }) {
                 placeholder="Nueva tarea..."
                 value={texto}
                 onChange={(e) => setTexto(e.target.value)}
-                onKeyDown={(e) => {if (e.key === "Enter") handleButtonClick();}}
+                onKeyDown={
+                    (e) => {
+                        if (e.key === "Enter") {
+                            handleButtonClick()
+                        }
+                    }}
             />
             <button
                 className="w-2/12 bg-green-500 hover:bg-green-600 rounded-xl text-white text-2xl font-bold transition duration-300 focus:outline-none focus:ring focus:border-blue-300"
