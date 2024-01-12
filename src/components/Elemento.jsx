@@ -35,6 +35,11 @@ function Elemento({ data, index, onDelete, onEdit }) {
           value={editedValue}
           onChange={handleInputChange}
           className="text-lg uppercase w-10/12 bg-gray-600 px-3 py-2 h-12 rounded shadow-2xl"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSaveEdit();
+            }
+          }}
         />
       ) : (
         <input 
