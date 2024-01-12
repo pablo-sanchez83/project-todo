@@ -10,18 +10,26 @@ function App() {
   useEffect(() => {
     localStorage.setItem('listaDatos', JSON.stringify(listaDatos));
   }, [listaDatos]);
-  
+
   function handleAdd(tarea) {
     setListaDatos((prevList) => {
-      const newList = [...prevList, tarea];
+      const newList = [...prevList, tarea.toUpperCase()];
       return newList;
     });
   }
 
-  function handleDelete(toRemove) {
+  function handleDelete(index) {
     setListaDatos((prevList) => {
       const newList = [...prevList];
-      newList.splice(toRemove, 1);
+      newList.splice(index, 1);
+      return newList;
+    });
+  }
+
+  function handleEdit(index, newValue) {
+    setListaDatos((prevList) => {
+      const newList = [...prevList];
+      newList[index] = newValue;
       return newList;
     });
   }
@@ -31,11 +39,17 @@ function App() {
       <Creador onCreate={handleAdd} />
       <Lista>
         {listaDatos.map((tarea, index) => (
-          <Elemento data={tarea} key={index} onDelete={() => handleDelete(index)}/>
+          <Elemento
+            data={tarea}
+            index={index}
+            key={index}
+            onDelete={() => handleDelete(index)}
+            onEdit={(index, value) => handleEdit(index, value)}
+          />
         ))}
       </Lista>
     </section>
-  )
+  );
 }
 
-export default App
+export default App;
